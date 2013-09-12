@@ -169,6 +169,14 @@
     font-weight: normal;
 }
 
+.bootstrap-select.btn-group .dropdown-menu .selectAll {
+    padding: 3px 20px;
+}
+
+.bootstrap-select.btn-group .dropdown-menu .selectAll a {
+    cursor: pointer; cursor: hand; 
+}
+
 .bootstrap-select.show-menu-arrow .dropdown-toggle:before {
     content: '';
     display: inline-block;
