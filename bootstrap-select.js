@@ -487,8 +487,11 @@
                         $option.prop('selected', !state);
                     }
 
-                    //Focus button after change
-                    //that.$button.focus();
+                    //Focus button after change only on single choice
+                    if (!that.multiple) {
+                        that.$button.focus();
+                    }
+
 
                     // Trigger select 'change'
                     if (prevValue != that.$element.val()) {

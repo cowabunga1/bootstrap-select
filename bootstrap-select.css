@@ -59,11 +59,12 @@
     z-index: 2051;
 }
 
-.bootstrap-select .btn:focus {
+
+/*.bootstrap-select .btn:focus {
     outline: thin dotted #333333 !important;
     outline: 5px auto -webkit-focus-ring-color !important;
     outline-offset: -2px;
-}
+}*/
 
 .bootstrap-select.btn-group .btn .filter-option {
     overflow: hidden;
@@ -153,6 +154,7 @@
 
 .bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text {
     margin-right: 34px;
+    margin-left: 0px;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li small {
@@ -161,8 +163,11 @@
 
 .bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:hover small,
 .bootstrap-select.btn-group .dropdown-menu li:not(.disabled) > a:focus small {
-    color: #64b1d8;
-    color: rgba(255,255,255,0.4);
+   
+}
+
+.bootstrap-select.btn-group .dropdown-menu > li > a:hover, .bootstrap-select.btn-group .dropdown-menu > li > a:focus {
+    outline: 0;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li > dt small {
