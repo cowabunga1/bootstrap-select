@@ -89,10 +89,12 @@
             var multiple = this.multiple ? ' show-tick' : '';
             var header = this.options.header ? '<h3 class="popover-title">' + this.options.header + '<button type="button" class="close" aria-hidden="true">&times;</button></h3>' : '';
             var searchbox = this.options.liveSearch ? '<div class="bootstrap-select-searchbox"><input type="text" class="input-block-level form-control" /></div>' : '';
-            var selectHeader = this.multiple && this.options.showSelectOptions ? '<div class="selectAll"><a class="all">' +
-                                this.options.selectOptionsText.all + '</a> | <a class="none">' +
-                                this.options.selectOptionsText.none + '</a></div>' : '';
-                             //   this.options.selectOptionsText.inv + '</a></div>' : '';
+            var selectHeader = this.multiple && this.options.showSelectOptions ? '<div class="' + this.options.selectOptionsBtnGroupStyle + ' selectAll"><a href="#" class="btn btn-default all">' +
+                this.options.selectOptionsText.all +
+                '</a><a href="#" class="btn btn-default none">' +
+                this.options.selectOptionsText.none +
+                '</a></div>' : '';
+
             var drop =
                 "<div class='btn-group bootstrap-select" + multiple + "'>" +
                     "<button type='button' class='btn dropdown-toggle' data-toggle='dropdown'>" +
@@ -207,7 +209,6 @@
 
         render: function() {
             var that = this;
-
 
             //Update the LI to match the SELECT
             this.$element.find('option').each(function(index) {
@@ -515,9 +516,8 @@
             this.$menu.on('click', '.selectAll a', function(e) {
                 if (e.target == e.currentTarget) {
                     switch(e.target.className){
-                        case 'all' : that.selectAll(); break;
-                        case 'none': that.deselectAll(); break;
-                        case 'inv' : that.selectInverse(); break;
+                        case 'btn btn-default all' : that.selectAll(); break;
+                        case 'btn btn-default none': that.deselectAll(); break;
                         default: break;
                     }
                     e.preventDefault();
@@ -526,7 +526,7 @@
                 }
             });
 
-            this.$menu.on('click', 'li.disabled a, li dt, li .div-contain, h3.popover-title', function(e) {
+            this.$menu.on('click', 'li.disabled a, li dt, li .div-contain, h3.popover-title, .selectAll', function(e) {
                 if (e.target == this) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -738,12 +738,13 @@
         selectedTextFormat : 'values',
         noneSelectedText : 'Nothing selected',
         countSelectedText: '{0} of {1} selected',
-        selectOptionsText: {all: 'All', none: 'None', inv: 'Inverse'},
+        selectOptionsText: {all: 'All', none: 'None'},
+        selectOptionsBtnGroupStyle: 'btn-group btn-group-justified btn-group-xs',
         width: false,
         container: false,
         hideDisabled: false,
         showSubtext: false,
-        showSelectOptions: true,
+        showSelectOptions: false,
         showIcon: true,
         showContent: true,
         dropupAuto: true,
